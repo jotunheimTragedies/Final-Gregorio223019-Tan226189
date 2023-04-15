@@ -1,0 +1,32 @@
+// Basic stuff
+1. Download Github Desktop 
+2. Sign in with your git account 
+3. Go to this link: https://github.com/jotunheimTragedies/Final-Gregorio223019-Tan226189
+4. Click the "Green Code button" and then click "Open with GitHub Desktop" 
+5. Click "Clone Repository" and "Fetch Origin"
+    5.1. In succeeding updates, click either "Show in VSCode" (youll have to select editor) or "Show in Explorer"
+    5.2. Drag the folders into VSCode
+6. Check History to see if changes are reflected from GitHub website
+7. Open VSCode. At that point, you have all the files 
+
+// How to push 
+1. Once you have made your necessary changes, go to the three circles thing underneath the search icon 
+2. Write an update/message ABOVE the commit button 
+3. Press the commit button 
+4. Press Sync Changes 
+
+// How to Fetch 
+1. Go to the three circles thing again 
+2. Go to the three dots next to the refresh icon 
+3. Click "Fetch"
+4. Click "Sync Changes"
+
+// IN CASE Fetch on VSCode doesn't work 
+1. Make sure changes are in GitHub website 
+2. Click the "Green Code button" and then click "Open with GitHub Desktop" 
+3. Click "Fetch Origin" or "Pull Origin"
+4. Check if changes occur through "History"
+5. Check changes in VSCode 
+
+// IF Nothing works at all 
+1. Message Waleed :)))

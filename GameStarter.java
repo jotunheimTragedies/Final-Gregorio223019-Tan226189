@@ -1,3 +1,7 @@
 public class GameStarter {
-    // idk wtf
+    public static void main(String[] args) {
+        GameFrame gf = new GameFrame(1920, 1080);
+        gf.setUpGUI();
+        
+    }
 }
