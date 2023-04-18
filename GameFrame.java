@@ -67,6 +67,7 @@ public class GameFrame implements MouseListener{
         JLabel currentLabel = (JLabel)e.getSource();
         if(currentLabel == newGameLabel) {
             System.out.println("Proceed to next gameState");
+            System.out.println("bitch better have my money");
         } else if(currentLabel == howPlayLabel) {
             System.out.println("Proceed to howPlayState");
         }
