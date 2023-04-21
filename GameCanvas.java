@@ -1,45 +1,34 @@
-
-//import java.awt.image.BufferedImage;
-//import java.io.IOException;
 import java.awt.*;
-
-//import javax.imageio.ImageIO;
-//import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.geom.*;
-import java.io.*;
+import java.util.*;
+import java.util.Timer;
 
 public class GameCanvas extends JComponent{
     private int width; 
     private int height; 
    
+    //private BombTimer timerBomb; 
+
     public int gameState;
     public final int titleState = 0; 
-    public final int runningState = 1; 
-
-
+    public final int howPlayState = 1; 
+    public final int runningState = 2;
     
-    //private BufferedImage newGameButton;
-    //private BufferedImage howPlayButton; 
-
-
+    private BombTimer bombTimer; 
     public GameCanvas(int w, int h) {
         width = w; 
         height = h; 
+        setLayout(new GridLayout(2, 3));
+  
         setPreferredSize(new Dimension(width, height));
-        gameState = titleState;
+        gameState = runningState;
 
-      
-
-
-       
-
-       /*  try {
-            newGameButton = ImageIO.read(getClass().getResourceAsStream("ImageIcons/NF New Game Button.png"));
-            howPlayButton = ImageIO.read(getClass().getResourceAsStream("ImageIcons/NF How Play Button.png"));
-        } catch(IOException e) {
-            e.printStackTrace();
-        } */
+        if(gameState == runningState) {
+            System.out.println("GameCanvas beep");
+            
+        }
+    
     }
 
     @Override
@@ -62,23 +51,14 @@ public class GameCanvas extends JComponent{
             g2d.setFont(new Font("Times New Roman", Font.PLAIN, 55));
             g2d.drawString("Ateneo CS Edition", 550, 445);
 
+        } else if(gameState == howPlayState) {
+            System.out.println("[howPlayState] beep boop from GameCanvas");
+            // statements will only be printed when i call repaint()
+        
+        
+        } else if(gameState == runningState) {
+            System.out.println("[runningState] beep boop from GameCanvas");
             
-
-           //g2d.drawImage(newGameButton, 350, 550, 300, 100, null);
-           //g2d.drawImage(howPlayButton, 800, 550, 300, 100, null);
-           //(Image img, int x, int y, int width, int height, ImageObserver observer)
-
-
-            // if newGamebutton mouseClicked 
-                // proceed to another game state
-                
-
-        }
-
-        
-    
-       
-
-        
+        }     
     }
 } 

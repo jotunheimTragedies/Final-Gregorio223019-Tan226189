@@ -1,10 +1,9 @@
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
+import java.awt.event.*;
 import javax.swing.*;
+import java.text.*;
 
-public class GameFrame implements MouseListener{
+public class GameFrame implements MouseListener {
     private int width;
     private int height; 
     private JFrame gameFrame; 
@@ -14,6 +13,10 @@ public class GameFrame implements MouseListener{
     private JLabel howPlayLabel; 
     private ImageIcon newGameButton;
     private ImageIcon howPlayButton; 
+
+    private BombTimer bombTimer; 
+
+    // can add bombtimer here as an inner class cause it has a thread and a jlabel 
 
     public GameFrame(int w, int h) {
         width = w; 
@@ -32,7 +35,8 @@ public class GameFrame implements MouseListener{
 
         newGameLabel.setIcon(newGameButton);
         howPlayLabel.setIcon(howPlayButton);
-        
+
+        //gameCanvas.gameState = gameCanvas.titleState;
 
     }
 
@@ -41,14 +45,18 @@ public class GameFrame implements MouseListener{
         cp.add(gameCanvas, BorderLayout.CENTER);
 
         if(gameCanvas.gameState == gameCanvas.titleState) {
+            System.out.println("setUpGUI");
             newGameLabel.setBounds(350, 550, 300, 100);
             howPlayLabel.setBounds(800, 550, 300, 100);
             gameFrame.add(newGameLabel);
             gameFrame.add(howPlayLabel);
             
+        } else if(gameCanvas.gameState == gameCanvas.runningState) {
+            System.out.println("setUpGUI");
+            bombTimer = new BombTimer(); 
+            JPanel bombPanel = bombTimer.getTimerPanel();
+            gameFrame.add(bombPanel, BorderLayout.CENTER);
         }
-
-        
 
         gameFrame.setTitle("Remain Speaking and No Human Being Detonates");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +64,7 @@ public class GameFrame implements MouseListener{
         gameFrame.pack();
         gameFrame.setVisible(true);
 
-        
+
     }
     
     // https://stackoverflow.com/questions/35448604/one-mouselistener-for-many-jlabel-components
@@ -67,15 +75,31 @@ public class GameFrame implements MouseListener{
         JLabel currentLabel = (JLabel)e.getSource();
         if(currentLabel == newGameLabel) {
             System.out.println("Proceed to next gameState");
+            if(gameCanvas.gameState == gameCanvas.titleState) {
+                gameCanvas.gameState = gameCanvas.runningState; 
+                System.out.println(gameCanvas.gameState);
+                System.out.println("beep from GameFrame");
+                gameCanvas.repaint();
+                newGameLabel.setVisible(false);
+                howPlayLabel.setVisible(false);
+                gameFrame.repaint();
+               
+            }
+
         } else if(currentLabel == howPlayLabel) {
             System.out.println("Proceed to howPlayState");
+            if(gameCanvas.gameState == gameCanvas.titleState) {
+                gameCanvas.gameState = gameCanvas.howPlayState;
+                System.out.println("rizz from GameFrame");
+                gameCanvas.repaint();
+                newGameLabel.setVisible(false);
+                howPlayLabel.setVisible(false);
+            }
         }
-        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-       
         //throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
     }
 
