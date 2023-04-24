@@ -28,4 +28,22 @@ public class GameFrame {
         
     }
 
+    public void setUpModules() { 
+        // Determine how to get currentCanvasState without it becoming an infinte loop 
+        // Need it not to be an infinite loop so that I can add the modules into GameFrame 
+            // we're planning on extending JPanel on all our other module components 
+                // module componenets are our composite shape classes 
+
+        while(true) {
+            int currentCanvasState = gameCanvas.getCurrentState();
+            if(currentCanvasState == gameCanvas.titleState) {
+                System.out.println("He like how i ride it");
+                
+            } 
+            
+            if(currentCanvasState == gameCanvas.howPlayState) {
+                System.out.println("Hop on the dick, I made him get excited");
+            }
+        }
+    }
 }   
